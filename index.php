@@ -96,22 +96,22 @@
           </button>
           <!-- LOGO -->              
           <!-- Texto baseado da logo -->
-          <a class="navbar-brand" href="index.html"><i class="fa fa-university"></i><span>Escola Curitibana</span></a>
+          <a class="navbar-brand" href="index.php"><i class="fa fa-university"></i><span>Escola Curitibana</span></a>
           <!-- Caso o cliente queira mudar a imagem  -->
-          <!-- <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt="logo"></a> -->
+          <!-- <a class="navbar-brand" href="index.php"><img src="assets/img/logo.png" alt="logo"></a> -->
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
-            <li class="active"><a href="index.html">Home</a></li>            
+            <li class="active"><a href="index.php">Home</a></li>            
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cursos <span class="fa fa-angle-down"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="course.html">Cursos e categorias</a></li>                
-                <li><a href="course-detail.html">Detalhe do curso</a></li>                
+                <li><a href="course.php">Cursos e categorias</a></li>                
+                <li><a href="course-detail.php">Detalhe do curso</a></li>                
               </ul>
             </li>    
-            <li><a href="contact.html">Contato</a></li>
-            <li><a href="404.html">404</a></li>               
+            <li><a href="contact.php">Contato</a></li>
+            <li><a href="404.php">404</a></li>               
             <li><a href="#" id="mu-search-icon"><i class="fa fa-search"></i></a></li>
           </ul>                     
         </div><!--/.nav-collapse -->        
