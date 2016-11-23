@@ -1,4 +1,5 @@
 <?php
+include("../config.php");
 session_start();
 $usuario = $_SESSION['login'];
 $nivel = $_SESSION['nivel'];
@@ -75,13 +76,57 @@ if(!isset($usuario) || $nivel != 0)
                 </div>              
                
             <div class="row text-center pad-top">
-                  
+                <?php
+                    $prep_exibir=$conexao->prepare('SELECT * FROM `cursos`');
+                    $prep_exibir->execute();
+					$prep_procura=$conexao->prepare('SELECT * FROM `categorias`');
+                    $prep_procura->execute();     					
+				?>    
+				  <div class="col-lg-12 col-md-6">
+					<h5>Cursos Cadastrados</h5>
+					<table class="table table-striped table-bordered table-hover">
+						<thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Curso</th>
+                                    <th>Preço</th> 
+									<th>Categoria</th>
+									<th>Texto</th> 									
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                                while($row=$prep_exibir->fetch()){
+									while($row_2=$prep_procura->fetch()){
+										if($row_2['Id']==$row['CategoriaId']){
+											$categoria = $row_2['Categoria'];
+											break;
+										}
+									}
+                                    echo "<tr>";
+                                    echo "<td>".$row['Id']."</td>";
+                                    echo "<td>".$row['Curso']."</td>";
+									echo "<td>".$row['Preco']."</td>";
+									echo "<td>".$categoria."</td>";
+									echo "<td>".$row['Texto']."</td>";
+                                    echo"<td><a href='excluirCurso.php'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
+                                    <a href='alterarCurso.php'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>
+                                    </td>";
+                                  echo "</tr>";
+                                }
+                                ?>                   
+                            </tbody>
+					</table>
+					<div align="right">
+                         <a href="adicionarCurso.php"><button type="button" align="right" class="btn btn-success">Adicionar Curso</button></a>
+                    </div>
+				  </div>
                  
                  
                  
                 
                  
-              </div>
+            </div>
                 
                 
                 
