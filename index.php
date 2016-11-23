@@ -70,7 +70,19 @@
                       <li><a href="#"><span class="fa fa-twitter"></span></a></li>
                       <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
                       <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
-                      <li><a href="#">Por um botão de login aqui</a></li>
+                      <?php
+                      session_start();
+                      if(!isset($_SESSION['login']))
+                      {
+                         echo("<li><a href='login/index.php'>Login</a></li>");
+                      }
+                      else
+                      {
+                        $usuario = $_SESSION['login'];
+                         echo("<li><a href='login/logout.php'>Bem vindo ".$usuario."</a></li>");
+                      }
+                     
+                      ?>
                     </ul>
                   </nav>
                 </div>

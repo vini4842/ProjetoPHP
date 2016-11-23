@@ -10,14 +10,25 @@ ob_start();
 
     $prep_select=$conexao->prepare('SELECT * FROM `usuarios` WHERE `Email` = :pusuario AND `Senha` = :psenha');
     $prep_select->bindValue(':pusuario',$usuario);
-    $prep_select->bindValue(':psenha',$senha);
+    $prep_select->bindValue(':psenha',md5($senha));
     $prep_select->execute();    
 
      if($prep_select->rowCount()>0)
      {
       session_start();
       $_SESSION['login'] = $usuario;
-      header("Refresh: 5, logado.php"); exit;
+      if($usuario != "admin")
+      {
+        $_SESSION['nivel'] = 1;
+         header("Location: ../index.php");
+      }
+      else
+      {
+         $_SESSION['nivel'] = 0;
+         header("Location: ../admin/index.php");
+      }
+      
+      
      }
      else
      {

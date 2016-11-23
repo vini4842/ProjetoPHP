@@ -18,8 +18,8 @@
   $prep_grava=$conexao->prepare('INSERT INTO `usuarios` (`id`, `email`, `senha`, `nivel`) VALUES (NULL, :pusuario, :psenha, :pnum);');
 
   $prep_grava->bindValue(':pusuario',$usuario);
-  $prep_grava->bindValue(':psenha',$senha);
-  $prep_grava->bindValue(':pnum',$num);
+  $prep_grava->bindValue(':psenha',md5($senha));
+  $prep_grava->bindValue(':pnum', $num);
   $prep_grava->execute();
   echo "<p align='center'>Registrado com sucesso!</p>";
   }
