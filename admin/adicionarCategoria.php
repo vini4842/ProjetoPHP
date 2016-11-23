@@ -76,7 +76,18 @@ if(!isset($usuario) || $nivel != 0)
                 </div>              
                
                 <div class="row text-center pad-top">    
-                                            
+                 
+                 <div class="col-lg-12 col-md-4">
+                 <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="categoria">Nome categoria</label>
+                            <input class="form-control" name="categoria" placeholder="Categoria" required="required" />                           
+                        </div>
+                        <div class="form-group" align="right">
+                          <input type="submit" class="btn btn-success" name="enviar" value="Cadastrar">
+                        </div>
+                  </form>      
+                  </div>                          
                  
                 
                  
@@ -109,3 +120,17 @@ if(!isset($usuario) || $nivel != 0)
    
 </body>
 </html>
+
+
+<?php
+  if(isset($_POST['enviar']))
+  {
+    $categoria = $_POST['categoria'];
+
+    $prep_grava=$conexao->prepare('INSERT INTO `categorias` (`id`, `Categoria`) VALUES (NULL, :pcategoria);');
+
+    $prep_grava->bindValue(':pcategoria',$categoria);   
+    $prep_grava->execute();
+    header("Location: categoria.php");
+  }
+?>

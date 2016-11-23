@@ -1,7 +1,6 @@
 <?php
 
 include("../config.php");
-
 session_start();
 $usuario = $_SESSION['login'];
 $nivel = $_SESSION['nivel'];
@@ -10,6 +9,9 @@ if(!isset($usuario) || $nivel != 0)
 {
   header("Location: ../login/sem_permissao.php");
 }
+
+$id = $_GET['id'];
+$categoria = $_GET['cat'];
 ?>
 
 <!DOCTYPE html>
@@ -59,8 +61,7 @@ if(!isset($usuario) || $nivel != 0)
 
                     <li class="active-link">
                         <a href="index.php" ><i class="fa fa-desktop "></i>Dashboard </a>
-                    </li>
-                   
+                    </li>                   
 
                     
                     
@@ -73,41 +74,28 @@ if(!isset($usuario) || $nivel != 0)
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Contato</h2>   
+                     <h2>Editar categoria</h2>   
                     </div>
                 </div>              
                
-              <div class="row text-center pad-top">
-                 <?php
-                    $prep_exibir=$conexao->prepare('SELECT * FROM `contato`');
-                    $prep_exibir->execute();                   
-                    
-                  ?>
- 
-              <div class="col-lg-12 col-md-6">
-                        <h5>Contato</h5>
-                        
-                        <div class="col-lg-12 col-md-4">
+                <div class="row text-center pad-top">    
+                 
+                 <div class="col-lg-12 col-md-4">
                  <form action="#" method="POST">
                         <div class="form-group">
-                            <label for="categoria">Texto de contato</label>
-                            <input type="text" class="form-control" name="texto" required="required" />                           
+                            <label for="categoria">Nome categoria</label>
+                            <input type="hidden" value="<?php echo"$id"?>">
+                            <input class="form-control" name="categoria" placeholder="Categoria" value="<?php echo"$categoria"?>" required="required" />                          
                         </div>
                         <div class="form-group" align="right">
-                          <input type="submit" class="btn btn-success" name="enviar" value="Cadastrar">
+                          <input type="submit" class="btn btn-success" name="enviar" value="Editar">
                         </div>
                   </form>      
-                  </div>            
-
-
-                    </div>
+                  </div>                          
                  
                 
                  
-              </div>
-                
-                
-                
+                </div>                
          
     </div>
              <!-- /. PAGE INNER  -->
@@ -132,16 +120,19 @@ if(!isset($usuario) || $nivel != 0)
     
    
 </body>
-</html> 
+</html>
+
+
 <?php
-if(isset($_POST['enviar']))
+  if(isset($_POST['enviar']))
   {
-    $texto = $_POST['texto'];
+    $categoria = $_POST['categoria'];
 
-    $prep_grava=$conexao->prepare('INSERT INTO `categorias` (`id`, `Categoria`) VALUES (NULL, :pcategoria);');
+    $prep_grava=$conexao->prepare('UPDATE `categorias` SET `Id`= :pid,`Categoria`=:pcategoria WHERE `Id` = :pid;');
 
-    $prep_grava->bindValue(':pcategoria',$categoria);   
+    $prep_grava->bindValue(':pcategoria',$categoria);
+    $prep_grava->bindValue(':pid',$id);   
     $prep_grava->execute();
     header("Location: categoria.php");
   }
-  ?>
+?>
