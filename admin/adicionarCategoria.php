@@ -71,49 +71,12 @@ if(!isset($usuario) || $nivel != 0)
             <div id="page-inner">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h2>Categorias</h2>   
+                     <h2>Adicionar nova categoria</h2>   
                     </div>
                 </div>              
                
                 <div class="row text-center pad-top">    
-                <?php
-
-                    $prep_exibir=$conexao->prepare('SELECT * FROM `categorias`');
-                    $prep_exibir->execute();               
-                    
-                  
-                ?>    
-                 
-                 <div class="col-lg-12 col-md-6">
-                        <h5>Categorias cadastradas</h5>
-                        <table class="table table-striped table-bordered table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Categoria</th>
-                                    <th>Ações</th>                                    
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-                                while($row=$prep_exibir->fetch()){
-                                  echo "<tr>";
-                                    echo "<td>".$row['Id']."</td>";
-                                    echo "<td>".$row['Categoria']."</td>";
-                                    echo"<td><a href='excluiCategoria.php'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
-                                    <a href='alteraCategoria.php'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>
-                                    </td>";
-                                  echo "</tr>";
-                                }
-                                ?>
-                                                         
-                            </tbody>
-                        </table>
-
-                        <div align="right">
-                         <a href="adicionarCategoria.php"><button type="button" align="right" class="btn btn-success">Adicionar Categoria</button></a>
-                        </div>
-                  </div>
+                                            
                  
                 
                  
