@@ -75,7 +75,14 @@ if(!isset($usuario) || $nivel != 0)
                     </div>
                 </div>              
                
-                <div class="row text-center pad-top">        
+                <div class="row text-center pad-top">    
+                <?php
+
+                    $prep_exibir=$conexao->prepare('SELECT * FROM `categorias`');
+                    $prep_exibir->execute();                   
+                    
+                  
+                ?>    
                  
                  <div class="col-lg-12 col-md-6">
                         <h5>Categorias cadastradas</h5>
@@ -103,9 +110,9 @@ if(!isset($usuario) || $nivel != 0)
                             </tbody>
                         </table>
 
-                         <button type="button" align="right" class="btn btn-success">Adicionar Categoria</button>
+                         <a href="adicionarCategoria.php"><button type="button" align="right" class="btn btn-success">Adicionar Categoria</button></a>
 
-                    </div>
+                  </div>
                  
                 
                  

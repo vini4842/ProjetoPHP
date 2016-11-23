@@ -84,7 +84,35 @@ if(!isset($usuario) || $nivel != 0)
                     
                   ?>
  
-              
+              <div class="col-lg-12 col-md-6">
+                        <h5>Contato</h5>
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Categoria</th>
+                                    <th>Ações</th>                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                                while($row=$prep_exibir->fetch()){
+                                  echo "<tr>";
+                                    echo "<td>".$row['Id']."</td>";
+                                    echo "<td>".$row['Categoria']."</td>";
+                                    echo"<td><a href='excluiCategoria.php'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
+                                    <a href='alteraCategoria.php'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>
+                                    </td>";
+                                  echo "</tr>";
+                                }
+                                ?>
+                                                         
+                            </tbody>
+                        </table>
+
+
+
+                    </div>
                  
                 
                  
