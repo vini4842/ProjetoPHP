@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 23-Nov-2016 às 13:17
+-- Generation Time: 23-Nov-2016 às 13:19
 -- Versão do servidor: 5.7.11-log
 -- PHP Version: 5.5.30
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `escolacuritibana`
 --
+CREATE DATABASE IF NOT EXISTS `escolacuritibana` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `escolacuritibana`;
 
 -- --------------------------------------------------------
 
