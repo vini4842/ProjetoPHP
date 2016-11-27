@@ -100,8 +100,16 @@ if(!isset($usuario) || $nivel != 0)
                                   echo "<tr>";
                                     echo "<td>".$row['Id']."</td>";
                                     echo "<td>".$row['Categoria']."</td>";
-                                    echo"<td><a href='excluiCategoria.php'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
-                                    <a href='alteraCategoria.php'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>
+                                    //Se tiver algum vinculo não mostra botão de excluir
+                                    $prep_cursos=$conexao->prepare('SELECT * FROM `cursos` where `CategoriaId` = :pidCat');
+                                    $prep_cursos->bindValue(':pidCat',$row['Id']); 
+                                    $prep_cursos->execute(); 
+                                    echo "<td>";
+                                    if($prep_cursos->rowCount() == 0)
+                                    {
+                                    echo"<a href='excluirCategoria.php?id=".$row['Id']."'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span>";
+                                    }
+                                    echo "<a href='editarCategoria.php?id=".$row['Id']."&cat=".$row['Categoria']."'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>
                                     </td>";
                                   echo "</tr>";
                                 }
