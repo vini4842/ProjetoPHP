@@ -14,7 +14,7 @@ if(!isset($usuario) || $nivel != 0)
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-      <meta charset="utf-8" />
+       <meta charset="Content-Type: text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Escola Curitibana</title>
   <!-- BOOTSTRAP STYLES-->
@@ -109,14 +109,14 @@ if(!isset($usuario) || $nivel != 0)
 							<div class="form-group">
 								<label class="control-label col-sm-2" for="curso">Curso: </label>
 								<div class="col-sm-10">
-									<input name="curso"type="text" class="form-control" width="30%" placeholder="Inserir nome do curso" required/>
+									<input name="curso" type="text" class="form-control" width="30%" placeholder="Inserir nome do curso" required/>
 								</div>
 							</div>
 							<div class="form-group">
 									<label class="control-label col-sm-2" for="duracao">Duração: </label>
 									<div class="col-sm-10">
 										<div class="input-group">
-											<input name="duracao"type="number" class="form-control" width="30%" placeholder="Inserir a quantidade de semanas" required/>
+											<input name="duracao" type="number" class="form-control" width="30%" placeholder="Inserir a quantidade de semanas" required/>
 											<span class="input-group-addon" id="basic-addon2">Semanas</span>
 										</div>
 									</div>
@@ -126,14 +126,14 @@ if(!isset($usuario) || $nivel != 0)
 								<div class="col-sm-10">
 									<div class="input-group">
 										<span class="input-group-addon">R$</span>
-										<input name="preco"type="number" step="0.01" class="form-control" width="30%" placeholder="Inserir o preco" required/>
+										<input name="preco" type="number" step="0.01" class="form-control" width="30%" placeholder="Inserir o preco" required/>
 									</div>
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="control-label col-sm-2" for="local">Local: </label>
 								<div class="col-sm-10">
-									<input name="local"type="text" class="form-control" width="30%" placeholder="Inserir o local" required/>
+									<input name="local" type="text" class="form-control" width="30%" placeholder="Inserir o local" required/>
 								</div>
 							</div>
 							<div class="form-group">
@@ -151,7 +151,7 @@ if(!isset($usuario) || $nivel != 0)
 							<div class="form-group">
 								<label class="control-label col-sm-2" for="incio">Data de Inicio: </label>
 								<div class="col-sm-10">
-									<input name="inicio"type="date" class="form-control" width="30%" placeholder="AAAA-MM-DD" required/>
+									<input name="inicio" type="date" class="form-control" width="30%" placeholder="AAAA-MM-DD" required/>
 								</div>
 							</div>
 							<div class="form-group">
