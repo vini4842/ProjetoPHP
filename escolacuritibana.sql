@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 27-Nov-2016 às 23:02
+-- Generation Time: 28-Nov-2016 às 02:47
 -- Versão do servidor: 10.1.19-MariaDB
 -- PHP Version: 5.6.24
 
@@ -36,9 +36,12 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`Id`, `Categoria`) VALUES
-(1, 'Eletronica'),
-(2, 'Informática'),
-(3, 'Medicina');
+(4, 'Gastronomia'),
+(5, 'Computacao'),
+(6, 'Fitness'),
+(7, 'Fotografia'),
+(8, 'Direito'),
+(9, 'Arquitetura');
 
 -- --------------------------------------------------------
 
@@ -74,7 +77,17 @@ CREATE TABLE `cursos` (
 --
 
 INSERT INTO `cursos` (`Id`, `Curso`, `Duracao`, `Preco`, `Local`, `CategoriaId`, `Inicio`, `Texto`, `Foto`) VALUES
-(18, 'teste', 10, 10, 'Curitiba, PR', 1, '2017-11-27', '																														Inserir DescriÃ§Ã£o aqui\r\n																											', 'b9d850922d5f3e5da8ac02bc754285e7.png');
+(19, 'Direito BÃ¡sico', 12, 1500, 'Curitiba, PR', 8, '2016-11-27', '																																																																																																																								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Quo est itaque vero porro quasi illo ex consequuntur ad animi commodi, ipsam p', '8e2e33bc8a07fd75da3b1356bc1f3ba0.jpeg'),
+(20, 'Culinaria', 16, 1000, 'Curitiba, PR', 4, '2017-12-30', '																				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Quo est itaque vero porro quasi illo ex consequuntur ad animi commodi, ipsam provident voluptas vel adipisci. Minima repellendus vel est, sequi labore quo ipsa voluptatem officii', 'dc64e6212ca3b95a93a7cc7ce9824949.gif'),
+(21, 'Instrutor de Academia', 8, 500, 'Curitiba, PR', 6, '2017-11-27', '																				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Quo est itaque vero porro quasi illo ex consequuntur ad animi commodi, ipsam provident voluptas vel adipisci. Minima repellendus vel est, sequi labore quo ipsa voluptatem officii', '64f7b2280188b61ccc19cf75ec9a0de8.jpg'),
+(22, 'Fotagrafia BÃ¡sico', 4, 800, 'Curitiba, PR', 7, '2017-01-05', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Quo est itaque vero porro quasi illo ex consequuntur ad animi commodi, ipsam provident voluptas vel adipisci. Minima repellendus vel est, sequi labore quo ipsa voluptatem officiis ex fuga nemo quas. E', '6cf1ea10e0067fbe294f3d73cfca55a7.jpg'),
+(23, 'Arquiteto I', 24, 3500, 'Curitiba, PR', 9, '2017-01-05', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.\r\n\r\nLorem ipsum dolor sit amet, consectetur adipisicing elit. Quo est itaque vero porro quasi illo ex consequuntur ad animi commodi, ipsam provident voluptas vel adipisci. Minima repellendus vel est, sequi labore quo ipsa voluptatem officiis ex fuga nemo quas.', 'c2a43b07979e3386db637c8df6ef0cf0.jpg'),
+(24, 'ProgramaÃ§Ã£o I', 8, 1000, 'Curitiba, PR', 5, '2017-01-05', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo est itaque vero porro quasi illo ex consequuntur ad animi commodi, ipsam provident voluptas vel adipisci. Minima repellendus vel est, sequi labore quo ipsa voluptatem officiis ex fuga nemo quas. Eligendi inventore ducimus omnis, maxime, alias accusantium similique minus! Labore facilis qui, sunt, ipsam consectetur minus sapiente saepe n', '8cc0dd959860cf05f0b8cc78d0f3d30b.jpg'),
+(25, 'ProgramaÃ§Ã£o II', 10, 1200, 'Curitiba, PR', 5, '2017-12-25', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo est itaque vero porro quasi illo ex consequuntur ad animi commodi, ipsam provident voluptas vel adipisci. Minima repellendus vel est, sequi labore quo ipsa voluptatem officiis ex fuga nemo quas. Eligendi inventore ducimus omnis, maxime, alias accusantium similique minus! Labore facilis qui, sunt, ipsam consectetur minus sapiente saepe n', 'c3ec2cce6eced273fa6b6e84ab4f6eb1.jpg'),
+(26, 'ProgramaÃ§Ã£o III', 16, 2000, 'Curitiba, PR', 5, '2017-01-05', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo est itaque vero porro quasi illo ex consequuntur ad animi commodi, ipsam provident voluptas vel adipisci. Minima repellendus vel est, sequi labore quo ipsa voluptatem officiis ex fuga nemo quas. Eligendi inventore ducimus omnis, maxime, alias accusantium similique minus! Labore facilis qui, sunt, ipsam consectetur minus sapiente saepe n', 'fc09e7ecba42a3593ef56e4a0792893f.jpg'),
+(27, 'Chefe de Cozinha', 20, 4000, 'Curitiba, PR', 4, '2017-11-27', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo est itaque vero porro quasi illo ex consequuntur ad animi commodi, ipsam provident voluptas vel adipisci. Minima repellendus vel est, sequi labore quo ipsa voluptatem officiis ex fuga nemo quas. Eligendi inventore ducimus omnis, maxime, alias accusantium similique minus! Labore facilis qui, sunt, ipsam consectetur minus sapiente saepe n', 'b626efe68ec20475b0fe3d4723fd2572.gif'),
+(28, 'Arquiteto II', 24, 2000, 'Curitiba, PR', 9, '2017-11-27', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo est itaque vero porro quasi illo ex consequuntur ad animi commodi, ipsam provident voluptas vel adipisci. Minima repellendus vel est, sequi labore quo ipsa voluptatem officiis ex fuga nemo quas. Eligendi inventore ducimus omnis, maxime, alias accusantium similique minus! Labore facilis qui, sunt, ipsam consectetur minus sapiente saepe n', 'ef28f5b2766cbdff415ad273b5193e08.jpg'),
+(29, 'Fotografia AvanÃ§ado', 12, 2000, 'Curitiba, PR', 7, '2017-11-27', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum					', '02e2d9fe7ecdaa800ecf934cad99bc93.jpg');
 
 -- --------------------------------------------------------
 
@@ -134,7 +147,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `contato`
 --
@@ -144,7 +157,7 @@ ALTER TABLE `contato`
 -- AUTO_INCREMENT for table `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `usuarios`
 --

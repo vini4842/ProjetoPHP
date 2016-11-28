@@ -154,10 +154,11 @@ if(!isset($usuario) || $nivel != 0)
 											while($row=$prep_procura->fetch()){
 												if($row['Id'] == $row_alt['CategoriaId']){
 													$categoriaDefault = $row['Categoria'];
+													$categoriaId = $row['Id'];
 													break;
 												}
 											}
-											echo "<option value='".row_alt['CategoriaId']."'>".$categoriaDefault."</option>";
+											echo "<option value='".$categoriaId."'>".$categoriaDefault."</option>";
 											while($row=$prep_procura_2->fetch()){
 												if($row['Id'] != $row_alt['CategoriaId']){
 													echo "<option value='".$row['Id']."'>".$row['Categoria']."</td>";
