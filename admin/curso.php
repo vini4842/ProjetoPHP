@@ -122,7 +122,6 @@ if(!isset($usuario) || $nivel != 0)
 									<th>Local</th>
 									<th>Categoria</th>
 									<th>Inicio</th>
-									<th>Texto</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -138,14 +137,13 @@ if(!isset($usuario) || $nivel != 0)
 									}
                                     echo "<tr>";
                                     echo "<td>".$row['Id']."</td>";
-									echo "<td> <img src=../img/".$row['Foto']." width='50' hright='100'/> </td>";
+									echo "<td> <img src=../img/".$row['Foto']." width='150' hright='200'/> </td>";
                                     echo "<td>".$row['Curso']."</td>";
 									echo "<td>".$row['Duracao']." semanas</td>";
 									echo "<td> R$".$row['Preco']."</td>";
 									echo "<td>".$row['Local']."</td>";
 									echo "<td>".$categoria."</td>";
 									echo "<td>".$row['Inicio']."</td>";
-									echo "<td>".$row['Texto']."</td>";
                                     echo"<td><a href='validacaoCursoCRUD.php?excluir&id=".$row['Id']."'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
                                     <a href='alterarCurso.php?Alterar&id=".$row['Id']."'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>
                                     </td>";
@@ -154,9 +152,10 @@ if(!isset($usuario) || $nivel != 0)
                                 ?>                   
                             </tbody>
 					</table>
-					<div align="right">
-                         <a href="adicionarCurso.php"><button type="button" align="right" class="btn btn-success">Adicionar Curso</button></a>
-                    </div>
+						<div align="right">
+							<a href="adicionarCurso.php"><button type="button" align="right" class="btn btn-success">Adicionar Curso</button></a>
+						</div>
+					
 				  </div>
                  
                  

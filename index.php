@@ -1,3 +1,6 @@
+<?php
+	include("config.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -410,26 +413,46 @@
             </div>
             <!-- End Title -->
             <!-- Start latest course content -->
+			
             <div id="mu-latest-course-slide" class="mu-latest-courses-content">
+			<?php
+				$prep_exibir=$conexao->prepare('SELECT * FROM `cursos` ORDER BY `Id` DESC');
+                $prep_exibir->execute();
+				$cont = 1;
+				while($row=$prep_exibir->fetch()){
+					$prep_procura=$conexao->prepare('SELECT * FROM `categorias`');
+					$prep_procura->execute(); 
+					while($row_2=$prep_procura->fetch()){
+						if($row['CategoriaId'] == $row_2['Id']){
+							$categoria = $row_2['Categoria'];
+							break;
+						}
+					}
+			?>
               <div class="col-lg-4 col-md-4 col-xs-12">
                 <div class="mu-latest-course-single">
                   <figure class="mu-latest-course-img">
-                    <a href="#"><img src="assets/img/courses/1.jpg" alt="img"></a>
+                    <?php echo "<a href='#'><img src='img/".$row['Foto']."' width='250' height='270' alt='img' /></a>"; ?>
                     <figcaption class="mu-latest-course-imgcaption">
-                      <a href="#">Categoria</a>
-                      <span><i class="fa fa-clock-o"></i>90 dias</span>
+                      <a href="#"><?php echo $categoria; ?></a>
+                      <span><i class="fa fa-clock-o"></i><?php echo $row['Duracao']; ?> semanas</span>
                     </figcaption>
                   </figure>
                   <div class="mu-latest-course-single-content">
-                    <h4><a href="#">Lorem ipsum dolor sit amet.</a></h4>
+                    <h4><a href="#"><?php echo $row['Curso']; ?></a></h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.</p>
                     <div class="mu-latest-course-single-contbottom">
                       <a class="mu-course-details" href="#">Detalhe</a>
-                      <span class="mu-course-price" href="#">R$165.00</span>
+                      <span class="mu-course-price" href="#">R$<?php echo $row['Preco']; ?></span>
                     </div>
                   </div>
                 </div>
               </div>
+			<?php
+					$cont++; if($cont == 7){ break; }
+				}
+			?>
+			<!--
               <div class="col-lg-4 col-md-4 col-xs-12">
                 <div class="mu-latest-course-single">
                   <figure class="mu-latest-course-img">
@@ -524,7 +547,9 @@
                     </div>
                   </div>
                 </div>
+				
               </div>
+				-->
             </div>
             <!-- Ultimos cursos fim -->
           </div>
