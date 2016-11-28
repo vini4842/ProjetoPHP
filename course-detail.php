@@ -1,3 +1,6 @@
+<?php
+	include("config.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -154,44 +157,55 @@
             <div class="row">
               <div class="col-md-9">
                 <!-- conteúdo -->
+					<?php
+						if(isset($_GET['detalhes'])){
+							$id = $_GET['id'];
+							$prep_exibir = $conexao->prepare("SELECT * FROM `cursos` WHERE `cursos`.`Id` = :pId");
+							$prep_exibir->bindValue(":pId", $id);
+							$prep_exibir->execute();
+							$row=$prep_exibir->fetch();
+							$prep_procura=$conexao->prepare('SELECT * FROM `categorias`');
+							$prep_procura->execute();
+							while($row_2=$prep_procura->fetch()){
+								if($row_2['Id'] == $row['CategoriaId']){
+									$categoria = $row_2['Categoria'];
+									break;
+								}
+							}
+						}else{
+							header("Location: index.php");
+							die();
+						}
+				   ?>   
                 <div class="mu-course-container mu-course-details">
                   <div class="row">
                     <div class="col-md-12">
                       <div class="mu-latest-course-single">
                         <figure class="mu-latest-course-img">
-                          <a href="#"><img src="assets/img/courses/1.jpg" alt="img"></a>
+                          <?php echo "<a href='#'><img src='img/".$row['Foto']."' width='500' height='520' alt='img' /></a>"; ?>
                           <figcaption class="mu-latest-course-imgcaption">
                             <a href="#">Curso</a>
-                            <span><i class="fa fa-clock-o"></i>90dias</span>
+                            <span><i class="fa fa-clock-o"></i><?php echo $row['Duracao'] * 7; ?> dias</span>
                           </figcaption>
                         </figure>
                         <div class="mu-latest-course-single-content">
-                          <h2><a href="#">Lorem ipsum dolor sit amet.</a></h2>
-                          <h4>Course Information</h4>
+                          <h2><a href="#"><?php echo $row['Curso']; ?></a></h2>
+                          <h4>Informações do Curso</h4>
                           <ul>
-                            <li> <span>Preço do curso</span> <span>R$250,00</span></li>
-                            <li> <span>Local</span> <span>Curitiba,BRA</span></li>
-                            <li> <span>Total de estudantes</span> <span>800+</span></li>
-                            <li> <span>Duração do curso</span> <span>4 semanas</span></li>
-                            <li> <span>Início do curso</span> <span> 25 de Junho/2016</span></li>
+                            <li> <span>Preço do curso</span> <span>R$ <?php echo $row['Preco']; ?></span></li>
+                            <li> <span>Local</span> <span><?php echo $row['Local']; ?></span></li>
+                            <li> <span>Categoria</span> <span><?php echo $categoria; ?></span></li>
+                            <li> <span>Duração do curso</span> <span><?php echo $row['Duracao']; ?> semanas</span></li>
+                            <li> <span>Início do curso</span> <span> <?php echo $row['Inicio']; ?></span></li>
                           </ul>
                           <h4>Descrição</h4>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.</p>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo est itaque vero porro quasi illo ex consequuntur ad animi commodi, ipsam provident voluptas vel adipisci. Minima repellendus vel est, sequi labore quo ipsa voluptatem officiis ex fuga nemo quas. Eligendi inventore ducimus omnis, maxime, alias accusantium similique minus! Labore facilis qui, sunt, ipsam consectetur minus sapiente saepe numquam magnam quidem.</p>
-                          <blockquote>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, placeat, ipsa. Modi sed quibusdam vel autem fugit, eaque, iste. Excepturi fugit dignissimos suscipit dolor perferendis debitis magni sed, quia ab.</p>
-                          </blockquote>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ea consequatur doloremque deleniti error ullam, accusamus vel est alias, sit. Similique voluptas aliquid, excepturi accusamus, sequi ducimus incidunt mollitia non.</p>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi saepe possimus doloribus quod quibusdam officia suscipit qui illum nemo itaque, porro ipsam tempore enim error eius quia, culpa. Reprehenderit consequuntur voluptatem dolorum magni natus inventore molestias veritatis eos aspernatur repudiandae.</p>
-                         
-                          
+                          <?php echo $row['Texto']; ?>
                         </div>
                       </div> 
                     </div>                                   
                   </div>
                 </div>
                 <!-- fim do curso -->
-                
               </div>
              
            </div>
