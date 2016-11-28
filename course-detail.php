@@ -66,7 +66,19 @@
                       <li><a href="#"><span class="fa fa-twitter"></span></a></li>
                       <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
                       <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
-                      <li><a href="#">botão de login aqui</li>
+                      <?php
+                      session_start();
+                      if(!isset($_SESSION['login']))
+                      {
+                         echo("<li><a href='login/index.php'>Login</a></li>");
+                      }
+                      else
+                      {
+                        $usuario = $_SESSION['nome'];
+                         echo("<li><a href='login/logout.php'>Bem vindo ".$usuario."</a></li>");
+                      }
+                     
+                      ?>
                     </ul>
                   </nav>
                 </div>
@@ -103,7 +115,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cursos <span class="fa fa-angle-down"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="course.php">Cursos e categorias</a></li>                
-                <li><a href="course-detail.php">Cursos e detalhes</a></li>                
+               
               </ul>
             </li>           
            
@@ -254,10 +266,18 @@
               <div class="mu-footer-widget">
                 <h4>Contato</h4>
                 <address>
-                  <p>Endereço perigoso</p>
-                  <p>Telefone: 41 555 5555 </p>
-                  <p>Website: já ta aqui</p>
-                  <p>Email: ñ tem</p>
+                   <?php
+
+                    $prep_exibir=$conexao->prepare('SELECT * FROM `contato`');
+                    $prep_exibir->execute();
+                   while ($row=$prep_exibir->fetch()) 
+                    {
+                        echo"<p>".$row['Endereço']."</p>";
+                        echo"<p>Telefone: ".$row['Telefone']."</p>";
+                        echo"<p>Website: ".$row['Website']."</p>";
+                        echo"<p>Email: ".$row['Email']."</p>";
+                    }
+                ?>
                 </address>
               </div>
             </div>

@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 28-Nov-2016 às 02:47
--- Versão do servidor: 10.1.19-MariaDB
--- PHP Version: 5.6.24
+-- Generation Time: 28-Nov-2016 às 11:48
+-- Versão do servidor: 5.7.11-log
+-- PHP Version: 5.5.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -51,8 +51,19 @@ INSERT INTO `categorias` (`Id`, `Categoria`) VALUES
 
 CREATE TABLE `contato` (
   `Id` int(11) NOT NULL,
-  `Texto` text NOT NULL
+  `Texto` text NOT NULL,
+  `Endereço` varchar(500) NOT NULL,
+  `Telefone` varchar(20) NOT NULL,
+  `Website` varchar(30) NOT NULL,
+  `Email` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `contato`
+--
+
+INSERT INTO `contato` (`Id`, `Texto`, `Endereço`, `Telefone`, `Website`, `Email`) VALUES
+(1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ', 'Rua do aprendizado, 1128', '(41) 3232-5856', 'www.escolacuritibana.com.br', 'escolacuritibana@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -87,7 +98,7 @@ INSERT INTO `cursos` (`Id`, `Curso`, `Duracao`, `Preco`, `Local`, `CategoriaId`,
 (26, 'ProgramaÃ§Ã£o III', 16, 2000, 'Curitiba, PR', 5, '2017-01-05', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo est itaque vero porro quasi illo ex consequuntur ad animi commodi, ipsam provident voluptas vel adipisci. Minima repellendus vel est, sequi labore quo ipsa voluptatem officiis ex fuga nemo quas. Eligendi inventore ducimus omnis, maxime, alias accusantium similique minus! Labore facilis qui, sunt, ipsam consectetur minus sapiente saepe n', 'fc09e7ecba42a3593ef56e4a0792893f.jpg'),
 (27, 'Chefe de Cozinha', 20, 4000, 'Curitiba, PR', 4, '2017-11-27', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo est itaque vero porro quasi illo ex consequuntur ad animi commodi, ipsam provident voluptas vel adipisci. Minima repellendus vel est, sequi labore quo ipsa voluptatem officiis ex fuga nemo quas. Eligendi inventore ducimus omnis, maxime, alias accusantium similique minus! Labore facilis qui, sunt, ipsam consectetur minus sapiente saepe n', 'b626efe68ec20475b0fe3d4723fd2572.gif'),
 (28, 'Arquiteto II', 24, 2000, 'Curitiba, PR', 9, '2017-11-27', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo est itaque vero porro quasi illo ex consequuntur ad animi commodi, ipsam provident voluptas vel adipisci. Minima repellendus vel est, sequi labore quo ipsa voluptatem officiis ex fuga nemo quas. Eligendi inventore ducimus omnis, maxime, alias accusantium similique minus! Labore facilis qui, sunt, ipsam consectetur minus sapiente saepe n', 'ef28f5b2766cbdff415ad273b5193e08.jpg'),
-(29, 'Fotografia AvanÃ§ado', 12, 2000, 'Curitiba, PR', 7, '2017-11-27', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum					', '02e2d9fe7ecdaa800ecf934cad99bc93.jpg');
+(29, 'Fotografia Avançado', 12, 2000, 'Curitiba, PR', 7, '2017-11-27', '										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus non dolorem excepturi libero itaque sint labore similique maxime natus eum														', '02e2d9fe7ecdaa800ecf934cad99bc93.jpg');
 
 -- --------------------------------------------------------
 
@@ -99,17 +110,19 @@ CREATE TABLE `usuarios` (
   `Id` int(11) NOT NULL,
   `Email` varchar(150) NOT NULL,
   `Senha` varchar(32) NOT NULL,
-  `Nivel` int(1) NOT NULL
+  `Nivel` int(1) NOT NULL,
+  `Nome` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`Id`, `Email`, `Senha`, `Nivel`) VALUES
-(3, 'ViniciusCruz', '827ccb0eea8a706c4c34a16891f84e7b', 1),
-(5, 'vini4842', '827ccb0eea8a706c4c34a16891f84e7b', 0),
-(6, 'admin', '827ccb0eea8a706c4c34a16891f84e7b', 0);
+INSERT INTO `usuarios` (`Id`, `Email`, `Senha`, `Nivel`, `Nome`) VALUES
+(3, 'ViniciusCruz', '827ccb0eea8a706c4c34a16891f84e7b', 1, 'Vinicius'),
+(5, 'vini4842', '827ccb0eea8a706c4c34a16891f84e7b', 0, 'Vinicius Cruz'),
+(6, 'admin', '827ccb0eea8a706c4c34a16891f84e7b', 0, 'Admin'),
+(7, 'vinicius@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 0, 'Vinicius Cruz');
 
 --
 -- Indexes for dumped tables
@@ -147,12 +160,12 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `contato`
 --
 ALTER TABLE `contato`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `cursos`
 --
@@ -162,7 +175,7 @@ ALTER TABLE `cursos`
 -- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -20,6 +20,7 @@ if(isset($_POST['enviar']))
     $telefone = $_POST['telefone'];
     $website = $_POST['website'];
     $email = $_POST['email'];
+    $id = $_POST['id'];
 
     $prep_grava=$conexao->prepare('UPDATE `contato` SET `Id`=:pid,`Texto`=:ptexto,`Endereço`=:pendereco,`Telefone`=:ptelefone,`Website`=:pwebsite,`Email`=:pemail WHERE `Id` = :pid;');
 
@@ -31,7 +32,10 @@ if(isset($_POST['enviar']))
     $prep_grava->bindValue(':pemail',$email); 
     $prep_grava->execute();
 
-    echo"foi";
+    
+    echo"<script>";
+    echo "window.location.href = 'index.php';";
+    echo "</script>";
   }
   ?>
 
@@ -116,9 +120,9 @@ if(isset($_POST['enviar']))
 
                         <?php
                         while ($row=$prep_exibir->fetch()) {
-                          $id = $row['Id'];
+                          
                         ?>
-                        <input type="hidden" value="<?php echo $row['Id'] ?>">
+                        <input type="hidden" name="id" value="<?php echo $row['Id'] ?>">
 
                             <label for="categoria">Texto de contato</label>
                             <input type="text" class="form-control" name="texto" value="<?php echo $row['Texto']; ?>" required="required" />

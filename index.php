@@ -122,7 +122,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cursos <span class="fa fa-angle-down"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="course.php">Cursos e categorias</a></li>                
-                <li><a href="course-detail.php">Detalhe do curso</a></li>                
+                       
               </ul>
             </li>    
             <li><a href="contact.php">Contato</a></li>
@@ -663,10 +663,18 @@
               <div class="mu-footer-widget">
                 <h4>Contato</h4>
                 <address>
-                  <p>Alguma rua perigosa, Brasil</p>
-                  <p>Telefone: (41) Não sei nenhum numero com 9 digitos </p>
-                  <p>Website: você já ta nele</p>
-                  <p>Email: pra que?</p>
+                   <?php
+
+                    $prep_exibir=$conexao->prepare('SELECT * FROM `contato`');
+                    $prep_exibir->execute();
+                   while ($row=$prep_exibir->fetch()) 
+                    {
+                        echo"<p>".$row['Endereço']."</p>";
+                        echo"<p>Telefone: ".$row['Telefone']."</p>";
+                        echo"<p>Website: ".$row['Website']."</p>";
+                        echo"<p>Email: ".$row['Email']."</p>";
+                    }
+                ?>
                 </address>
               </div>
             </div>

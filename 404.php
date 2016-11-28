@@ -65,7 +65,19 @@
                       <li><a href="#"><span class="fa fa-twitter"></span></a></li>
                       <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
                       <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
-                      <li><a href="#">login</li>
+                      <?php
+                      session_start();
+                      if(!isset($_SESSION['login']))
+                      {
+                         echo("<li><a href='login/index.php'>Login</a></li>");
+                      }
+                      else
+                      {
+                        $usuario = $_SESSION['nome'];
+                         echo("<li><a href='login/logout.php'>Bem vindo ".$usuario."</a></li>");
+                      }
+                     
+                      ?>
                     </ul>
                   </nav>
                 </div>
@@ -102,7 +114,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cursos <span class="fa fa-angle-down"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="course.php">Cursos e categorias</a></li>                
-                <li><a href="course-detail.php">Curso detalhe</a></li>                
+                
               </ul>
             </li>           
                 
