@@ -272,7 +272,7 @@
                     $prep_exibir->execute();
                    while ($row=$prep_exibir->fetch()) 
                     {
-                        echo"<p>".$row['Endereço']."</p>";
+                        echo"<p>".$row['Endereco']."</p>";
                         echo"<p>Telefone: ".$row['Telefone']."</p>";
                         echo"<p>Website: ".$row['Website']."</p>";
                         echo"<p>Email: ".$row['Email']."</p>";

@@ -128,7 +128,7 @@ if(isset($_POST['enviar']))
                             <input type="text" class="form-control" name="texto" value="<?php echo $row['Texto']; ?>" required="required" />
 
                             <label for="categoria">Endereço</label>
-                            <input type="text" class="form-control" name="endereco" value="<?php echo $row['Endereço']; ?>" required="required" />  
+                            <input type="text" class="form-control" name="endereco" value="<?php echo $row['Endereco']; ?>" required="required" />  
 
                             <label for="categoria">Telefone</label>
                             <input type="text" class="form-control" name="telefone" value="<?php echo $row['Telefone']; ?>" required="required" />  

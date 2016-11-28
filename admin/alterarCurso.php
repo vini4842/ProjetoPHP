@@ -1,4 +1,4 @@
-<?php
+Ôªø<?php
 
 include("../config.php");
 session_start();
@@ -119,7 +119,7 @@ if(!isset($usuario) || $nivel != 0)
 								</div>
 							</div>
 							<div class="form-group">
-									<label class="control-label col-sm-2" for="duracao">DuraÁ„o: </label>
+									<label class="control-label col-sm-2" for="duracao">Dura√ß√£o: </label>
 									<div class="col-sm-10">
 										<div class="input-group">
 											<input name="duracao"type="number" class="form-control" width="30%" value="<?php echo $row_alt['Duracao']; ?>" required/>
@@ -128,7 +128,7 @@ if(!isset($usuario) || $nivel != 0)
 									</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-sm-2" for="preco">Preco: </label>
+								<label class="control-label col-sm-2" for="preco">Pre√ßo: </label>
 								<div class="col-sm-10">
 									<div class="input-group">
 										<span class="input-group-addon">R$</span>
@@ -181,7 +181,7 @@ if(!isset($usuario) || $nivel != 0)
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="control-label col-sm-2" for="texto">DescriÁ„o: </label>
+								<label class="control-label col-sm-2" for="texto">Descri√ß√£o: </label>
 								<div class="col-sm-10">
 									<textarea name="texto" class="form-control" rows="4" cols="50" maxlength="500">
 										<?php echo $row_alt['Texto']; ?>
