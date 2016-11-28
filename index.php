@@ -440,7 +440,7 @@
                   </figure>
                   <div class="mu-latest-course-single-content">
                     <h4><a href="#"><?php echo $row['Curso']; ?></a></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.</p>
+                    <p>Conheça mais sobre o curso de <?php echo $categoria ?>. Nossos cursos oferecem o conhecimento que você precisa para te fazer crescer no mercade de trabalho. Também oferecemos garantia de aprendizado.</p>
                     <div class="mu-latest-course-single-contbottom">
                       <?php echo "<a class='mu-course-details' href='course-detail.php?detalhes&id=".$row['Id']."'>Detalhe</a>"; ?>
                       <span class="mu-course-price" href="#">R$<?php echo $row['Preco']; ?></span>

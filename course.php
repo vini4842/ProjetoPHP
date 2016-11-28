@@ -1,3 +1,6 @@
+<?php
+	include("config.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -158,25 +161,54 @@
                 <!-- conteúdo -->
                 <div class="mu-course-container">
                   <div class="row">
+					<?php
+						if(isset($_GET['filtro'])){
+							$filtro = $_GET['id'];
+						}
+						else{
+							$filtro = 0;
+						}
+						$prep_exibir=$conexao->prepare('SELECT * FROM `cursos` ORDER BY `Id` DESC');
+						$prep_exibir->execute();
+						while($row=$prep_exibir->fetch()){
+							$prep_procura=$conexao->prepare('SELECT * FROM `categorias`');
+							$prep_procura->execute(); 
+							while($row_2=$prep_procura->fetch()){
+								if($row['CategoriaId'] == $row_2['Id']){
+									$categoria = $row_2['Categoria'];
+									break;
+								}
+							}
+							if($filtro != 0){
+								if($row["CategoriaId"] != $filtro){
+									continue;
+								}
+							}
+							
+					?>
                     <div class="col-md-6 col-sm-6">
                     <div class="mu-latest-course-single">
                       <figure class="mu-latest-course-img">
-                        <a href="#"><img src="assets/img/courses/1.jpg" alt="img"></a>
+                        <?php echo "<a href='#'><img src='img/".$row['Foto']."' width='250' height='270' alt='img' /></a>"; ?>
                         <figcaption class="mu-latest-course-imgcaption">
-                          <a href="#">Curso 1</a>
-                          <span><i class="fa fa-clock-o"></i>90 dias</span>
+                          <a href="#"><?php echo $categoria; ?></a>
+                          <span><i class="fa fa-clock-o"></i><?php echo $row['Duracao']; ?> Semanas</span>
                         </figcaption>
                       </figure>
                       <div class="mu-latest-course-single-content">
-                        <h4><a href="#">Lorem ipsum dolor sit amet.</a></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quod nisi quisquam modi dolore, dicta obcaecati architecto quidem ullam quia.</p>
+                        <h4><a href="#"><?php echo $row['Curso']; ?></a></h4>
+                        <p>Conheça mais sobre o curso de <?php echo $categoria ?>. Nossos cursos oferecem o conhecimento que você precisa para te fazer crescer no mercade de trabalho. Também oferecemos garantia de aprendizado. </p>
                         <div class="mu-latest-course-single-contbottom">
-                          <a class="mu-course-Detalhes" href="#">Detalhes</a>
-                          <span class="mu-course-price" href="#">R$165.00</span>
+                          <?php echo "<a class='mu-course-details' href='course-detail.php?detalhes&id=".$row['Id']."'>Detalhe</a>"; ?>
+                          <span class="mu-course-price" href="#">R$<?php echo $row['Preco']; ?></span>
                         </div>
                       </div>
                     </div> 
-                  </div>                  
+					</div>  
+					<?php
+						}
+					?>
+					<!--
                   <div class="col-md-6 col-sm-6">
                     <div class="mu-latest-course-single">
                       <figure class="mu-latest-course-img">
@@ -272,6 +304,7 @@
                       </div>
                     </div>
                   </div>
+					-->
                   </div>
                 </div>
                 <!-- fim conteúdo -->
@@ -282,19 +315,21 @@
                 <aside class="mu-sidebar">
                   <!-- Categorias -->
                   <div class="mu-single-sidebar">
+					<?php
+						$prep_cat=$conexao->prepare('SELECT * FROM `categorias`');
+						$prep_cat->execute();    					
+					?>  
                     <h3>Categorias</h3>
                     <ul class="mu-sidebar-catg">
-                      <li><a href="#">Web Design</a></li>
-                      <li><a href="">Programação</a></li>
-                      <li><a href="">Matemática</a></li>
-                      <li><a href="">Física</a></li>
-                      <li><a href="">Química</a></li>
-                      <li><a href="">Inglês</a></li>
+							<?php
+								while($row=$prep_cat->fetch()){
+									echo "<li><a href='course.php?filtro&id=".$row['Id']."'>".$row['Categoria']."</a></li>";
+								}
+							?>
+							<li><a href='course.php?filtro&id=0'>Todas</a></li>
                     </ul>
                   </div>
                   <!-- Categorias -->
-                 
-                
                 </aside>
                 <!-- / fim sidebar -->
              </div>
