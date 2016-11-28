@@ -1,4 +1,5 @@
 <?php
+include("../config.php");
 session_start();
 $usuario = $_SESSION['login'];
 $nivel = $_SESSION['nivel'];
@@ -75,13 +76,94 @@ if(!isset($usuario) || $nivel != 0)
                 </div>              
                
             <div class="row text-center pad-top">
-                  
+                <?php
+                    $prep_exibir=$conexao->prepare('SELECT * FROM `cursos`');
+                    $prep_exibir->execute();    					
+				?>    
+				  <div class="col-lg-12 col-md-6">
+					<h5>Cursos Cadastrados</h5>
+					<?php
+						if(isset($_GET["msg"])){
+							$cod = $_GET["cod"];
+							if ($cod == 1){
+								?>
+								<div class='alert alert-dismissible alert-success'>
+									<button type='button' class='close' data-dismiss='alert'>&times;</button>
+									<strong>Cadastro Realizado com sucesso</strong>.
+								</div>
+								<?php
+							}
+							if ($cod == 2){
+								?>
+									<div class='alert alert-dismissible alert-success'>
+									<button type='button' class='close' data-dismiss='alert'>&times;</button>
+									<strong>Curso Excluido com Sucesso</strong>.
+									</div>
+								<?php
+							}
+							if ($cod == 3){
+								?>
+									<div class='alert alert-dismissible alert-success'>
+									<button type='button' class='close' data-dismiss='alert'>&times;</button>
+									<strong>Curso Alterado com Sucesso</strong>.
+									</div>
+								<?php
+							}
+						}
+					?>
+					<table class="table table-striped table-bordered table-hover">
+						<thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Foto</th>
+                                    <th>Curso</th> 
+									<th>Duração</th>
+									<th>Preco</th> 		
+									<th>Local</th>
+									<th>Categoria</th>
+									<th>Inicio</th>
+									<th>Texto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+                                while($row=$prep_exibir->fetch()){
+									$prep_procura=$conexao->prepare('SELECT * FROM `categorias`');
+									$prep_procura->execute(); 
+									while($row_2=$prep_procura->fetch()){
+										if($row['CategoriaId'] == $row_2['Id']){
+											$categoria = $row_2['Categoria'];
+											break;
+										}
+									}
+                                    echo "<tr>";
+                                    echo "<td>".$row['Id']."</td>";
+									echo "<td> <img src=../img/".$row['Foto']." width='50' hright='100'/> </td>";
+                                    echo "<td>".$row['Curso']."</td>";
+									echo "<td>".$row['Duracao']." semanas</td>";
+									echo "<td> R$".$row['Preco']."</td>";
+									echo "<td>".$row['Local']."</td>";
+									echo "<td>".$categoria."</td>";
+									echo "<td>".$row['Inicio']."</td>";
+									echo "<td>".$row['Texto']."</td>";
+                                    echo"<td><a href='validacaoCursoCRUD.php?excluir&id=".$row['Id']."'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span>
+                                    <a href='alterarCurso.php?Alterar&id=".$row['Id']."'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>
+                                    </td>";
+									echo "</tr>";
+                                }
+                                ?>                   
+                            </tbody>
+					</table>
+					<div align="right">
+                         <a href="adicionarCurso.php"><button type="button" align="right" class="btn btn-success">Adicionar Curso</button></a>
+                    </div>
+				  </div>
                  
                  
                  
                 
                  
-              </div>
+            </div>
                 
                 
                 

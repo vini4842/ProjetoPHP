@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 23-Nov-2016 às 13:19
--- Versão do servidor: 5.7.11-log
--- PHP Version: 5.5.30
+-- Generation Time: 27-Nov-2016 às 23:02
+-- Versão do servidor: 10.1.19-MariaDB
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `escolacuritibana`
 --
-CREATE DATABASE IF NOT EXISTS `escolacuritibana` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `escolacuritibana`;
 
 -- --------------------------------------------------------
 
@@ -38,7 +36,9 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`Id`, `Categoria`) VALUES
-(1, 'Categoria 01');
+(1, 'Eletronica'),
+(2, 'Informática'),
+(3, 'Medicina');
 
 -- --------------------------------------------------------
 
@@ -59,11 +59,22 @@ CREATE TABLE `contato` (
 
 CREATE TABLE `cursos` (
   `Id` int(11) NOT NULL,
-  `Curso` varchar(50) NOT NULL,
-  `Preco` double NOT NULL,
+  `Curso` varchar(30) NOT NULL,
+  `Duracao` int(11) NOT NULL,
+  `Preco` float NOT NULL,
+  `Local` varchar(30) NOT NULL,
   `CategoriaId` int(11) NOT NULL,
-  `Texto` text NOT NULL
+  `Inicio` date NOT NULL,
+  `Texto` varchar(400) NOT NULL,
+  `Foto` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `cursos`
+--
+
+INSERT INTO `cursos` (`Id`, `Curso`, `Duracao`, `Preco`, `Local`, `CategoriaId`, `Inicio`, `Texto`, `Foto`) VALUES
+(18, 'teste', 10, 10, 'Curitiba, PR', 1, '2017-11-27', '																														Inserir DescriÃ§Ã£o aqui\r\n																											', 'b9d850922d5f3e5da8ac02bc754285e7.png');
 
 -- --------------------------------------------------------
 
@@ -123,7 +134,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `contato`
 --
@@ -133,7 +144,7 @@ ALTER TABLE `contato`
 -- AUTO_INCREMENT for table `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `usuarios`
 --
