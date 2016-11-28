@@ -12,6 +12,29 @@ if(!isset($usuario) || $nivel != 0)
 }
 ?>
 
+<?php
+if(isset($_POST['enviar']))
+  {
+    $texto = $_POST['texto'];
+    $endereco = $_POST['endereco'];
+    $telefone = $_POST['telefone'];
+    $website = $_POST['website'];
+    $email = $_POST['email'];
+
+    $prep_grava=$conexao->prepare('UPDATE `contato` SET `Id`=:pid,`Texto`=:ptexto,`Endereço`=:pendereco,`Telefone`=:ptelefone,`Website`=:pwebsite,`Email`=:pemail WHERE `Id` = :pid;');
+
+    $prep_grava->bindValue(':pid',$id);  
+    $prep_grava->bindValue(':ptexto',$texto);
+    $prep_grava->bindValue(':pendereco',$endereco);
+    $prep_grava->bindValue(':ptelefone',$telefone);
+    $prep_grava->bindValue(':pwebsite',$website);
+    $prep_grava->bindValue(':pemail',$email); 
+    $prep_grava->execute();
+
+    echo"foi";
+  }
+  ?>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -88,10 +111,34 @@ if(!isset($usuario) || $nivel != 0)
                         <h5>Contato</h5>
                         
                         <div class="col-lg-12 col-md-4">
-                 <form action="#" method="POST">
+                 <form action="" method="POST">
                         <div class="form-group">
+
+                        <?php
+                        while ($row=$prep_exibir->fetch()) {
+                          $id = $row['Id'];
+                        ?>
+                        <input type="hidden" value="<?php echo $row['Id'] ?>">
+
                             <label for="categoria">Texto de contato</label>
-                            <input type="text" class="form-control" name="texto" required="required" />                           
+                            <input type="text" class="form-control" name="texto" value="<?php echo $row['Texto']; ?>" required="required" />
+
+                            <label for="categoria">Endereço</label>
+                            <input type="text" class="form-control" name="endereco" value="<?php echo $row['Endereço']; ?>" required="required" />  
+
+                            <label for="categoria">Telefone</label>
+                            <input type="text" class="form-control" name="telefone" value="<?php echo $row['Telefone']; ?>" required="required" />  
+
+                            <label for="categoria">Website</label>
+                            <input type="text" class="form-control" name="website" value="<?php echo $row['Website']; ?>" required="required" />  
+
+                            <label for="categoria">E-mail</label>
+                            <input type="text" class="form-control" name="email" value="<?php echo $row['Email']; ?>" required="required" />                         
+
+
+                            <?php
+                          }
+                            ?>
                         </div>
                         <div class="form-group" align="right">
                           <input type="submit" class="btn btn-success" name="enviar" value="Cadastrar">
@@ -133,15 +180,3 @@ if(!isset($usuario) || $nivel != 0)
    
 </body>
 </html> 
-<?php
-if(isset($_POST['enviar']))
-  {
-    $texto = $_POST['texto'];
-
-    $prep_grava=$conexao->prepare('INSERT INTO `categorias` (`id`, `Categoria`) VALUES (NULL, :pcategoria);');
-
-    $prep_grava->bindValue(':pcategoria',$categoria);   
-    $prep_grava->execute();
-    header("Location: categoria.php");
-  }
-  ?>

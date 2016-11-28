@@ -6,6 +6,7 @@
   {
     $usuario = $_POST['usuario'];
     $senha = $_POST['senha'];
+    $nome = $_POST['nome'];
     $num = 0;
 
     $prep_select=$conexao->prepare('SELECT * FROM `usuarios` WHERE `usuarios`.`email` = :pusuario');
@@ -15,11 +16,12 @@
     if($prep_select->rowCount()==0)
     {
 
-  $prep_grava=$conexao->prepare('INSERT INTO `usuarios` (`id`, `email`, `senha`, `nivel`) VALUES (NULL, :pusuario, :psenha, :pnum);');
+  $prep_grava=$conexao->prepare('INSERT INTO `usuarios` (`id`, `email`, `senha`, `nivel`,`nome`) VALUES (NULL, :pusuario, :psenha, :pnum, :pnome);');
 
   $prep_grava->bindValue(':pusuario',$usuario);
   $prep_grava->bindValue(':psenha',md5($senha));
   $prep_grava->bindValue(':pnum', $num);
+  $prep_grava->bindValue(':pnome', $nome);
   $prep_grava->execute();
   echo "<p align='center'>Registrado com sucesso!</p>";
   }
@@ -53,6 +55,7 @@
     <h1>Registre-se</h1><br>
   <form action="#" method="POST">
     <input type="text" name="usuario" placeholder="Digite seu email">
+     <input type="text" name="nome" placeholder="Digite seu nome">
     <input type="password" name="senha" placeholder="Digite sua senha">
     <input type="submit" name="logar" class="login login-submit" value="Registrar">
   </form>

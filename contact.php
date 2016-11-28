@@ -164,34 +164,10 @@
           <!-- form -->
           <div class="mu-contact-content">           
             <div class="row">
-              <div class="col-md-6">
-                <div class="mu-contact-left">
-                  <form class="contactform">                  
-                    <p class="comment-form-author">
-                      <label for="nome">Nome <span class="required">*</span></label>
-                      <input type="text" required="required" size="30" value="" name="nome">
-                    </p>
-                    <p class="comment-form-email">
-                      <label for="email">Email <span class="required">*</span></label>
-                      <input type="email" required="required" aria-required="true" value="" name="email">
-                    </p>
-                    <p class="comment-form-url">
-                      <label for="subject">Assunto</label>
-                      <input type="text" name="assunto">  
-                    </p>
-                    <p class="comment-form-comment">
-                      <label for="comment">Mensagem</label>
-                      <textarea required="required" aria-required="true" rows="8" cols="45" name="Mensagem"></textarea>
-                    </p>                
-                    <p class="form-submit">
-                      <input type="submit" value="Enviar" class="mu-post-btn" name="submit">
-                    </p>        
-                  </form>
-                </div>
-              </div>
-              <div class="col-md-6">
+             
+              <div class="col-md-12 ">
                 <div class="mu-contact-right">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12619.089331519184!2d151.9065836474792!3d-23.44289557914886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m3!3e6!4m0!4m0!5e1!3m2!1spt-BR!2sus!4v1479483700796" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12619.089331519184!2d151.9065836474792!3d-23.44289557914886!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m3!3e6!4m0!4m0!5e1!3m2!1spt-BR!2sus!4v1479483700796" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
                 </div>
               </div>
             </div>

@@ -78,7 +78,7 @@
                       }
                       else
                       {
-                        $usuario = $_SESSION['login'];
+                        $usuario = $_SESSION['nome'];
                          echo("<li><a href='login/logout.php'>Bem vindo ".$usuario."</a></li>");
                       }
                      

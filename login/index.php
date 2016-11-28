@@ -27,6 +27,13 @@ ob_start();
          $_SESSION['nivel'] = 0;
          header("Location: ../admin/index.php");
       }
+
+       while($row=$prep_select->fetch())
+       {
+          $_SESSION['nome'] = $row['Nome'];
+       }
+
+
       
       
      }
@@ -59,8 +66,8 @@ ob_start();
   <div class="login-card">
     <h1>Login</h1><br>
   <form action="#" method="POST">
-    <input type="text" name="usuario" placeholder="Username">
-    <input type="password" name="senha" placeholder="Password">
+    <input type="text" name="usuario" placeholder="Email">
+    <input type="password" name="senha" placeholder="Senha">
     <input type="submit" name="logar" class="login login-submit" value="login">
   </form>
 
